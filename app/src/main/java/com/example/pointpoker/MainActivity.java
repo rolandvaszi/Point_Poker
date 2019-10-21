@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        Intent intent = new Intent(this, VoteActivity.class);
+        final Intent intent = new Intent(this, VoteActivity.class);
         this.startActivity(intent);
     }
 }

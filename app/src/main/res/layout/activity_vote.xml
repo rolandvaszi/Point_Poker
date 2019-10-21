@@ -1,9 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".VoteActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02" />
+
+    <TextView
+        android:id="@+id/projectText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/project"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:columnCount="4"
+        android:rowCount="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/projectText">
+
+        <Button
+            android:id="@+id/button0"
+            android:layout_height="70dp"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_height="70dp"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_height="70dp"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_height="70dp"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_height="70dp"
+            android:text="5" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_height="70dp"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/button13"
+            android:layout_height="70dp"
+            android:text="13" />
+
+        <Button
+            android:id="@+id/button20"
+            android:layout_height="70dp"
+            android:text="20" />
+
+        <Button
+            android:id="@+id/button40"
+            android:layout_height="70dp"
+            android:text="40" />
+
+        <Button
+            android:id="@+id/button100"
+            android:layout_height="70dp"
+            android:text="100" />
+
+        <Button
+            android:id="@+id/buttonQuestion"
+            android:layout_height="70dp"
+            android:text="\?" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/icons_coffee"
+            tools:layout_editor_absoluteX="248dp"
+            tools:layout_editor_absoluteY="373dp" />
+
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/quest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+
+    <Button
+        android:id="@+id/voteBtn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:onClick="vote"
+        android:text="@string/vote"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
