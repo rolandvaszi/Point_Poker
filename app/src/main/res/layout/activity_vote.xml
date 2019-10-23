@@ -20,7 +20,8 @@
         android:text="@string/project"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
+        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
+        style="@style/BlackText"/>
 
     <GridLayout
         android:id="@+id/gridLayout"
