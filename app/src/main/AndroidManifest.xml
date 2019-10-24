@@ -12,7 +12,7 @@
         <activity
             android:name=".VotesActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".VoteActivity"></activity>
+            android:parentActivityName=".VoteActivity" />
         <activity
             android:name=".VoteActivity"
             android:screenOrientation="portrait"
