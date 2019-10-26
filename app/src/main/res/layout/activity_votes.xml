@@ -4,6 +4,6 @@
     android:id="@+id/recyclerViewList"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VotesActivity">
+    tools:context=".VotesFragment">
 
 </androidx.recyclerview.widget.RecyclerView>

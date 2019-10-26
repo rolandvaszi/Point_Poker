@@ -3,9 +3,11 @@ package com.example.pointpoker;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,9 +16,9 @@ import com.example.pointpoker.utils.Utils;
 import java.util.Arrays;
 import java.util.Vector;
 
-public class VoteActivity extends AppCompatActivity {
+public class VoteFragment extends Fragment {
     // for debugging
-    private static final String TAG = "VotesActivity";
+    private static final String TAG = "VoteFragment";
 
     private Vector<String> names = new Vector<>(Arrays.
             asList("0", "1", "2", "3",
@@ -25,34 +27,45 @@ public class VoteActivity extends AppCompatActivity {
 
     private String vote;
 
+    private View view;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vote);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.d(TAG, "Fragment Vote started");
+        this.vote = null;
+
+        view = inflater.inflate(R.layout.activity_vote, container, false);
 
         initRecyclerView();
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        this.vote = null;
-        // TODO: get the project and the question name from the DB
+        view.findViewById(R.id.voteBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (vote != null) {
+                    // TODO: save the vote into the DB
+                    Utils.loadFragment(new VotesFragment(), getActivity().getSupportFragmentManager());
+                } else {
+                    Utils.makeToast(v.getContext(), "You didn't vote yet.");
+                }
+            }
+        });
+
+        return view;
     }
 
     private void initRecyclerView() {
         Log.d(TAG, "Init RecyclerView grid");
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewGrid);
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 4);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerViewGrid);
+        GridLayoutManager layoutManager = new GridLayoutManager(view.getContext(), 4);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter2Grid adapter = new RecyclerViewAdapter2Grid(this, names,
+        RecyclerViewAdapter2Grid adapter = new RecyclerViewAdapter2Grid(view.getContext(), names,
                 new ClickListener() {
                     @Override
                     public void onPositionClicked(int position) {
                         String msg = "Your vote: ";
-                        Context context = getApplicationContext();
+                        Context context = view.getContext();
 
                         // which button is pressed
                         String btn = names.get(position);
@@ -69,14 +82,5 @@ public class VoteActivity extends AppCompatActivity {
                     }
                 });
         recyclerView.setAdapter(adapter);
-    }
-
-    public void vote(View view) {
-        if (this.vote != null) {
-            // TODO: save the vote into the DB
-            Utils.startNewIntent(this, VotesActivity.class);
-        } else {
-            Utils.makeToast(this, "You didn't vote yet.");
-        }
     }
 }

@@ -22,6 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void login(View view) {
         // TODO: check if the user is in the DB
-        Utils.startNewIntent(this, VoteActivity.class);
+        Utils.startNewIntent(this, FragmentHolder.class);
     }
 }
