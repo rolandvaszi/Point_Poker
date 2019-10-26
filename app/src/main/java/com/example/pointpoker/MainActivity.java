@@ -1,6 +1,7 @@
 package com.example.pointpoker;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -10,19 +11,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText loginText;
     DatabaseHelper databaseHelper;
+    EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        loginText = findViewById(R.id.nameText);
+        editText = findViewById(R.id.nameText);
+        databaseHelper = new DatabaseHelper(this);
+        databaseHelper.addUser("Roland");
+        databaseHelper.addUser("Botond");
     }
 
     public void login(View view) {
-        Intent intent = new Intent(this, VoteActivity.class);
-        this.startActivity(intent);
+        if(databaseHelper.userExist(editText.getText().toString())){
+            toastMessage("Login successfull!");
+            Intent intent = new Intent(this, VoteActivity.class);
+            this.startActivity(intent);
+        } else {
+            toastMessage("Wrong username!");
+        }
+
     }
 
     private void toastMessage(String message){
