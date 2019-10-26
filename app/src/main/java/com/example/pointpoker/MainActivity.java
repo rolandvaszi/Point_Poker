@@ -5,23 +5,32 @@ import android.view.View;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
 import com.example.pointpoker.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText loginText;
     DatabaseHelper databaseHelper;
+    EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        loginText = findViewById(R.id.nameText);
+        editText = findViewById(R.id.nameText);
+        databaseHelper = new DatabaseHelper(this);
+        databaseHelper.addUser("Roland");
+        databaseHelper.addUser("Botond");
     }
 
     public void login(View view) {
-        // TODO: check if the user is in the DB
-        Utils.startNewIntent(this, FragmentHolder.class);
+        if(databaseHelper.userExist(editText.getText().toString())){
+            Utils.makeToast(this, "Login successfull!");
+            Utils.startNewIntent(this, FragmentActivity.class);
+        } else {
+            Utils.makeToast(this, "Wrong username!");
+        }
+
     }
 }
