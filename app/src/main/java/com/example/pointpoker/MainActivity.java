@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     public void login(View view) {
         if(databaseHelper.userExist(editText.getText().toString())){
             Utils.makeToast(this, "Login successfull!");
-            Utils.startNewIntent(this, FragmentActivity.class);
+            Utils.startNewIntent(this, FragmentHolder.class);
         } else {
             Utils.makeToast(this, "Wrong username!");
         }

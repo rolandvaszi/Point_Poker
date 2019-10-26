@@ -24,8 +24,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String USER_TABLE_CREATE = "create table user(UID integer primary key autoincrement, uname text)";
         String TASK_TABLE_CREATE = "create table task(TID integer primary key autoincrement, tname text)";
-        String VOTE_TABLE_CREATE = "create table vote(UID integer, TID integer primary key, VText text not null " +
-                "primary key, status text not null, foreign key (UID) references user(UID), foreign key (TID) " +
+        String VOTE_TABLE_CREATE = "create table vote(UID integer, TID integer, VText text not null " +
+                ", status text not null, primary key(TID, VText), foreign key (UID) references user(UID), foreign key (TID) " +
                 "references task(TID))";
         db.execSQL(USER_TABLE_CREATE);
         db.execSQL(TASK_TABLE_CREATE);
