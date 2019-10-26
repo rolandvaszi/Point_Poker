@@ -10,13 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".VotesActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".VoteActivity" />
-        <activity
-            android:name=".VoteActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity"/>
+            android:name=".FragmentHolder"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">

@@ -1,15 +1,11 @@
 package com.example.pointpoker;
 
-//<<<<<<< Database_connection
-import android.content.Intent;
-import android.database.Cursor;
-//=======
-//>>>>>>> master
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
 import com.example.pointpoker.utils.Utils;
 
@@ -29,22 +25,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-//<<<<<<< Database_connection
         if(databaseHelper.userExist(editText.getText().toString())){
-            toastMessage("Login successfull!");
-            Intent intent = new Intent(this, VoteActivity.class);
-            this.startActivity(intent);
+            Utils.makeToast(this, "Login successfull!");
+            Utils.startNewIntent(this, FragmentHolder.class);
         } else {
-            toastMessage("Wrong username!");
+            Utils.makeToast(this, "Wrong username!");
         }
 
-    }
-
-    private void toastMessage(String message){
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-//=======
-        // TODO: check if the user is in the DB
-        Utils.startNewIntent(this, VoteActivity.class);
-//>>>>>>> master
     }
 }
