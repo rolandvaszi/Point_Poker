@@ -12,15 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class RecyclerViewAdapter2List extends RecyclerView.Adapter<RecyclerViewAdapter2List.ViewHolder> {
     // for debugging
-    private static final String TAG = "RecyclerViewAdapter";
+    private static final String TAG = "RecyclerViewAdapterList";
 
     private ArrayList<String> names;
     private ArrayList<String> numbers;
     private Context context;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> numbers) {
+    public RecyclerViewAdapter2List(Context context, ArrayList<String> names, ArrayList<String> numbers) {
         this.names = names;
         this.numbers = numbers;
         this.context = context;

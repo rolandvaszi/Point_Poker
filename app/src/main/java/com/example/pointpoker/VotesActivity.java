@@ -32,10 +32,10 @@ public class VotesActivity extends AppCompatActivity {
     }
 
     private void initRecyclerView() {
-        Log.d(TAG, "Init RecyclerView");
+        Log.d(TAG, "Init RecyclerView list");
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, this.names, this.numbers);
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewList);
+        RecyclerViewAdapter2List adapter = new RecyclerViewAdapter2List(this, this.names, this.numbers);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
