@@ -1,6 +1,7 @@
 package com.example.pointpoker;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,8 @@ public class VotesFragment extends Fragment {
 
     private View view;
 
+    DatabaseHelper db = new DatabaseHelper(getContext());
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "Fragment Votes started");
@@ -35,13 +38,14 @@ public class VotesFragment extends Fragment {
 
     private void getDatas() {
         // TODO: get data from the DB
-        this.names.add("Joco");
+        this.names.add("Roland");
         this.numbers.add("7");
+        this.names.add("Botond");
+        this.numbers.add("100");
     }
 
     private void initRecyclerView() {
         Log.d(TAG, "Init RecyclerView list");
-
         RecyclerView recyclerView = view.findViewById(R.id.recyclerViewList);
         RecyclerViewAdapter2List adapter = new RecyclerViewAdapter2List(view.getContext(), this.names, this.numbers);
         recyclerView.setAdapter(adapter);
